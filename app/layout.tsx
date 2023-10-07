@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { Session, getServerSession } from "next-auth";
 import { SessionProvider } from "@/components/SessionProvider";
 import { GET } from "@/app/api/auth/[...nextauth]/route";
+import Login from "@/components/Login";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,7 +37,6 @@ export default async function RootLayout({
                             {/* ClientProvider - Notification */}
 
                             <div className="bg-[#343541] flex-1">
-                                {" "}
                                 {children}
                             </div>
                         </div>
