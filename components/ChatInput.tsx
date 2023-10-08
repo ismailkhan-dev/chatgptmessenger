@@ -5,10 +5,12 @@ import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 
 type Props = {
     chatId: string;
 };
+
 function ChatInput({ chatId }: Props) {
     const [prompt, setPrompt] = useState("");
     const { data: session } = useSession();
@@ -48,6 +50,7 @@ function ChatInput({ chatId }: Props) {
         );
 
         // TODO: Toast notification to say loading!
+        const notification = toast.loading("ChatGPT is thinking...");
 
         // Get method for text
         await fetch("/api/askQuestion", {
@@ -59,6 +62,7 @@ function ChatInput({ chatId }: Props) {
         }).then(() => {
             console.log("Message sent!");
             // TODO: Toast notification to say successful.
+            toast.success("ChatGPT has responded!", { id: notification });
         });
     };
 
