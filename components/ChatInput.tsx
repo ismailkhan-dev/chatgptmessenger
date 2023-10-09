@@ -16,13 +16,15 @@ function ChatInput({ chatId }: Props) {
     const { data: session } = useSession();
 
     // TODO: useSWR to get the openAI API model
-    const model = "davinci";
+    const model = "text-davinci-003";
 
     const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (!prompt) return;
         const input = prompt.trim();
+        if (input === "") return;
+
         setPrompt("");
 
         const message: Message = {

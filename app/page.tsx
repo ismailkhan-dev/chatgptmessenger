@@ -20,7 +20,7 @@ function HomePage() {
                     </div>
 
                     <div className="space-y-2">
-                        <p className="infoText">"Explain Something to me"</p>
+                        <p className="infoText">Explain Something to me</p>
                         <p className="infoText">
                             What is the diference between a dog and a cat
                         </p>
