@@ -1,23 +1,35 @@
-// Helper function to query the OpenAI API
+/**
+ * Helper function.
+ * Queries the OpenAI API for a chat-based completion using provided messages and configurations.
+ * Always prepends a system instruction to guide the model's response.
+ * Returns the model's generated message content or an error message.
+ * Compatible with OpenAI API v3.2.1.
+ */
 
-import openai from "./chatgpt";
+import openai from "./chatgptConfig";
 
-const query = async (prompt: string, chatId: string, model: string) => {
+const query = async (prompt: GPTMessage[], chatId: string, model: string) => {
+    // TODO: Add instructions in a new ts file
+    // prompt.unshift({
+    //     role: "system",
+    //     content: instructions,
+    // });
+
     const res = await openai
-        .createCompletion({
+        .createChatCompletion({
             model,
-            prompt,
-            temperature: 0.9,
+            user: chatId,
+            messages: prompt,
+            temperature: 0.7,
             top_p: 1,
-            max_tokens: 300,
+            max_tokens: 1000,
             frequency_penalty: 0,
             presence_penalty: 0,
+            stream: false,
+            n: 1,
         })
-        .then((res) => res.data.choices[0].text)
-        .catch(
-            (err) =>
-                `ChatGPT was unable to find an answer for that! (Error ${err.message}:)`
-        );
+        .then((res) => res.data.choices[0].message?.content)
+        .catch((err) => `Please try again! (Error ${err.message}:)`);
 
     return res;
 };
