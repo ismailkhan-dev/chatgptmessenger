@@ -14,10 +14,13 @@
     },
     "dependencies": {
         "@heroicons/react": "^2.0.18",
+        "@types/node": "18.15.7",
+        "@types/react": "18.0.28",
+        "@types/react-dom": "18.0.11",
         "firebase": "^10.4.0",
         "firebase-admin": "^11.11.0",
-        "next": "13.5.4",
-        "next-auth": "^4.23.2",
+        "next": "^13.4.3",
+        "next-auth": "^4.22.1",
         "openai": "^3.2.1",
         "react": "^18",
         "react-dom": "^18",
@@ -25,9 +28,6 @@
         "react-hot-toast": "^2.4.1"
     },
     "devDependencies": {
-        "@types/node": "^20",
-        "@types/react": "^18",
-        "@types/react-dom": "^18",
         "autoprefixer": "^10",
         "eslint": "^8",
         "eslint-config-next": "13.5.4",
