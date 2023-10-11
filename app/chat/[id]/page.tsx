@@ -1,6 +1,4 @@
 "use client";
-import Chat from "@/components/Chat";
-import ChatInput from "@/components/ChatInput";
 import { db } from "@/firebase/firebase";
 import {
     ArrowDownCircleIcon,
@@ -20,6 +18,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
+import toast from "react-hot-toast";
 import ScrollableFeed from "react-scrollable-feed";
 import ReactTextareaAutosize from "react-textarea-autosize";
 
@@ -162,7 +161,7 @@ function ChatPage({ params: { id } }: Props) {
         );
 
         //Toast Notification while processing...
-        // const notification = toast.loading("Chat is processing...");
+        const notification = toast.loading("Chat is processing...");
 
         const chatContext = messages?.docs.map((message) => {
             return {
@@ -202,9 +201,9 @@ function ChatPage({ params: { id } }: Props) {
                 setChatResponded(true);
 
                 // Toast notification when successful!
-                // toast.success("Chat has responded!", {
-                //   id: notification,
-                // });
+                toast.success("Chat has responded!", {
+                    id: notification,
+                });
             });
     };
 
@@ -273,13 +272,13 @@ function ChatPage({ params: { id } }: Props) {
             {/* Chat */}
 
             <ScrollableFeed
-                ref={scrollableRef}
-                onScroll={(isAtBottom: boolean) =>
-                    updateIsAtBottomState(isAtBottom)
-                }
-                className={`flex-1 ${
-                    !isAtBottom && "scroll-smooth"
-                } scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-[#202123] scrollbar-thumb-rounded-lg`}
+            // ref={scrollableRef}
+            // onScroll={(isAtBottom: boolean) =>
+            //     updateIsAtBottomState(isAtBottom)
+            // }
+            // className={`flex-1 ${
+            //     !isAtBottom && "scroll-smooth"
+            // } scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-[#202123] scrollbar-thumb-rounded-lg`}
             >
                 <div
                     id="scrollDiv"
@@ -288,10 +287,10 @@ function ChatPage({ params: { id } }: Props) {
                 >
                     {messages?.empty && (
                         <>
-                            <p className="text-gray-700 dark:text-gray-300 text-lg md:text-xl text-center mt-10">
+                            <p className="text-white dark:text-gray-300 text-lg md:text-xl text-center mt-10">
                                 Write a prompt below to get started!
                             </p>
-                            <ArrowDownCircleIcon className="text-gray-700 dark:text-gray-300 h-9 w-9 animate-bounce mx-auto mt-5" />
+                            <ArrowDownCircleIcon className="text-white dark:text-gray-300 h-9 w-9 animate-bounce mx-auto mt-5" />
                         </>
                     )}
 
@@ -300,6 +299,9 @@ function ChatPage({ params: { id } }: Props) {
                     {/* Message */}
                     {messages?.docs.map((message, i) => {
                         const isChat = message.data().user.name === "Chat";
+                        const avatarSrc = isChat
+                            ? "/chatgpt-response.svg"
+                            : message.data().user.avatar;
 
                         return (
                             <div
@@ -311,7 +313,7 @@ function ChatPage({ params: { id } }: Props) {
                                 <div className="shrink-0 object-cover">
                                     <Image
                                         unoptimized
-                                        src={message.data().user.avatar}
+                                        src={avatarSrc}
                                         height={100}
                                         width={100}
                                         alt="avatar"

@@ -12,7 +12,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "ChatGPT Messenger by Ismail Khan",
-    description: "Using Next.js and OpenAI API",
+    description: "Generative AI Language Model",
+    icons: {
+        icon: "/public/favicon.ico",
+    },
 };
 
 export default async function RootLayout({

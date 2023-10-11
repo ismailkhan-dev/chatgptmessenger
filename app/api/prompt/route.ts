@@ -28,12 +28,12 @@ export async function POST(request: Request) {
     const response = await query(outboundMessages, id, model);
 
     const message: Message = {
-        text: response || "Chad could not find a response",
+        text: response || "Chat could not find a response",
         createdAt: admin.firestore.Timestamp.now(),
         user: {
-            _id: "ChadGPT",
-            name: "Chad",
-            avatar: "/chadgpt.png",
+            _id: "ChatGPT",
+            name: "Chat",
+            avatar: "/public/chatgpt-logo.png",
         },
     };
 
