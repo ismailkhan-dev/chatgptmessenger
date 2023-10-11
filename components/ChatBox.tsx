@@ -1,4 +1,4 @@
-import { db } from "../firebase";
+import { db } from "../firebase/firebase";
 import { ChatBubbleLeftIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { collection, deleteDoc, doc, orderBy, query } from "firebase/firestore";
 import { truncate } from "fs";

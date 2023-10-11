@@ -1,6 +1,6 @@
 "use client";
 
-import { db } from "@/firebase";
+import { db } from "@/firebase/firebase";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
@@ -59,13 +59,17 @@ function ChatInput({ chatId }: Props) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                Accept: "application/json",
             },
             body: JSON.stringify({ prompt: input, chatId, model, session }),
-        }).then(() => {
-            console.log("Message sent!");
-            // TODO: Toast notification to say successful.
-            toast.success("ChatGPT has responded!", { id: notification });
-        });
+        })
+            .then((res) => {
+                // console.log("Message sent!");
+                return res.json();
+            })
+            .then(() => {
+                toast.success("ChatGPT has responded!", { id: notification });
+            });
     };
 
     return (
@@ -84,7 +88,7 @@ function ChatInput({ chatId }: Props) {
                     disabled={!prompt || !session}
                     className="bg-[#11A37F] hover:opacity-50 text-white font-bold px-4 py-2 rounded disabled:bg-gray-300 disabled:cursor-not-allowed"
                 >
-                    <PaperAirplaneIcon className="h-4 w-4 -rotate-45" />
+                    <PaperAirplaneIcon className="h-3 w-3 -rotate-45" />
                 </button>
             </form>
 

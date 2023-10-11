@@ -6,20 +6,24 @@
  * Compatible with OpenAI API v3.2.1.
  */
 
+import { instructions } from "@/app/helpers/constants/system-prompt";
 import openai from "./chatgptConfig";
 
-const query = async (prompt: GPTMessage[], chatId: string, model: string) => {
-    // TODO: Add instructions in a new ts file
-    // prompt.unshift({
-    //     role: "system",
-    //     content: instructions,
-    // });
+export async function query(
+    outboundMessages: GPTMessage[],
+    id: string,
+    model: string
+) {
+    outboundMessages.unshift({
+        role: "system",
+        content: instructions,
+    });
 
-    const res = await openai
+    const response = await openai
         .createChatCompletion({
             model,
-            user: chatId,
-            messages: prompt,
+            user: id,
+            messages: outboundMessages,
             temperature: 0.7,
             top_p: 1,
             max_tokens: 1000,
@@ -29,9 +33,7 @@ const query = async (prompt: GPTMessage[], chatId: string, model: string) => {
             n: 1,
         })
         .then((res) => res.data.choices[0].message?.content)
-        .catch((err) => `Please try again! (Error ${err.message}:)`);
+        .catch((err) => `Please try again! (Error: ${err.message})`);
 
-    return res;
-};
-
-export default query;
+    return response;
+}

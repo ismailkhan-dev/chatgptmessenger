@@ -1,4 +1,4 @@
-import { adminDb } from "@/firebaseAdmin";
+import { adminDb } from "@/firebase/firebaseAdmin";
 import query from "@/lib/queryApi";
 import admin from "firebase-admin";
 import type { NextApiRequest, NextApiResponse } from "next";
