@@ -247,7 +247,7 @@ function ChatPage({ params: { id } }: Props) {
             className="flex flex-col overflow-hidden"
             style={{ height: "100svh" }}
         >
-            <div className="sticky top-0 md:hidden bg-[#343541] h-11 border-b border-[#2C2D36] w-full shadow-sm">
+            {/* <div className="sticky top-0 md:hidden bg-[#343541] h-11 border-b border-[#2C2D36] w-full shadow-sm">
                 <div className="flex relative items-center text-gray-300 h-full">
                     <div className="w-[16rem] inset-y-0 m-auto">
                         <p className="relative text-center text-base truncate">
@@ -267,7 +267,7 @@ function ChatPage({ params: { id } }: Props) {
                         <PlusCircleIcon className="h-6 w-6" />
                     </button>
                 </div>
-            </div>
+            </div> */}
 
             {/* Chat */}
 
@@ -285,14 +285,14 @@ function ChatPage({ params: { id } }: Props) {
                     ref={scrollRef}
                     className="overflow-y-auto overflow-x-hidden"
                 >
-                    {messages?.empty && (
+                    {/* {messages?.empty && (
                         <>
                             <p className="text-white dark:text-gray-300 text-lg md:text-xl text-center mt-10">
                                 Write a prompt below to get started!
                             </p>
                             <ArrowDownCircleIcon className="text-white dark:text-gray-300 h-9 w-9 animate-bounce mx-auto mt-5" />
                         </>
-                    )}
+                    )} */}
 
                     {loading && <div className="dot-spin m-auto mt-52"></div>}
 
@@ -300,15 +300,15 @@ function ChatPage({ params: { id } }: Props) {
                     {messages?.docs.map((message, i) => {
                         const isChat = message.data().user.name === "Chat";
                         const avatarSrc = isChat
-                            ? "/chatgpt-response.svg"
+                            ? "/chatgpt-logo.png"
                             : message.data().user.avatar;
 
                         return (
                             <div
                                 key={i}
-                                className={`flex text-gray-700 dark:text-gray-300 ${
-                                    isChat && "bg-gray-100 dark:bg-[#434654]"
-                                } py-5 max-w-2xl mx-auto space-x-5 px-10`}
+                                className={`flex ${
+                                    isChat && "bg-[#434654]"
+                                } text-white py-5 max-w-4xl mx-auto space-x-5 px-10`}
                             >
                                 <div className="shrink-0 object-cover">
                                     <Image
@@ -317,11 +317,11 @@ function ChatPage({ params: { id } }: Props) {
                                         height={100}
                                         width={100}
                                         alt="avatar"
-                                        className="h-7 w-7"
+                                        className="h-8 w-8 rounded-sm m-2"
                                     />
                                 </div>
 
-                                <div className="max-w-2xl">
+                                <div className="max-w-2xl pt-2">
                                     <p
                                         ref={messageRef}
                                         className="text-base whitespace-pre-wrap"
