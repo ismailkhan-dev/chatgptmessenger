@@ -285,14 +285,14 @@ function ChatPage({ params: { id } }: Props) {
                     ref={scrollRef}
                     className="overflow-y-auto overflow-x-hidden"
                 >
-                    {/* {messages?.empty && (
+                    {messages?.empty && (
                         <>
                             <p className="text-white dark:text-gray-300 text-lg md:text-xl text-center mt-10">
-                                Write a prompt below to get started!
+                                Type in a prompt below below to get started!
                             </p>
                             <ArrowDownCircleIcon className="text-white dark:text-gray-300 h-9 w-9 animate-bounce mx-auto mt-5" />
                         </>
-                    )} */}
+                    )}
 
                     {loading && <div className="dot-spin m-auto mt-52"></div>}
 
