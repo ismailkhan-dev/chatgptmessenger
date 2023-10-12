@@ -13,9 +13,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
     title: "ChatGPT Messenger by Ismail Khan",
     description: "Generative AI Language Model",
-    icons: {
-        icon: "/public/favicon.ico",
-    },
 };
 
 export default async function RootLayout({
@@ -36,7 +33,7 @@ export default async function RootLayout({
                     ) : (
                         <div className="flex">
                             {/* Sidebar */}
-                            <div className="bg-[#202123] max-w-xs h-screen overflow-y-auto md:min-w-[20rem]">
+                            <div className="bg-[#202123] max-w-xs h-screen overflow-y-auto md:min-w-[16rem]">
                                 <SideBar />
                             </div>
 

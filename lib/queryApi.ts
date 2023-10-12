@@ -26,11 +26,11 @@ export async function query(
             messages: outboundMessages,
             temperature: 0.7,
             top_p: 1,
-            max_tokens: 1000,
+            max_tokens: 300,
             frequency_penalty: 0,
             presence_penalty: 0,
             stream: false,
-            n: 1,
+            // n: 1,
         })
         .then((res) => res.data.choices[0].message?.content)
         .catch((err) => `Please try again! (Error: ${err.message})`);
