@@ -9,7 +9,7 @@ function Login() {
                 src="/loginPageLogo.png"
                 width={300}
                 height={300}
-                alt="logo"
+                alt="ChaptGPT Login Logo"
             />
             <button
                 onClick={() => signIn("google")}
