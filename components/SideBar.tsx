@@ -41,7 +41,7 @@ function SideBar() {
             {session && (
                 <div
                     onClick={() => signOut({ callbackUrl: "/" })}
-                    className="flex items-center justify-start space-x-2 rounded-lg txt-sm text-gray-300 cursor-pointer hover:bg-gray-700/70 transition-all duration-300 ease-out px-3 py-3 !justify-between"
+                    className="flex items-center space-x-2 rounded-lg txt-sm text-gray-300 cursor-pointer hover:bg-gray-700/70 transition-all duration-300 ease-out px-3 py-3 justify-between"
                 >
                     <div className="flex space-x-2 items-center justify-center">
                         <ArrowRightOnRectangleIcon className="h-4 w-4 text-gray-500" />
