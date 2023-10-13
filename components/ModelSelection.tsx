@@ -25,7 +25,7 @@ const ModelSelection = ({ defaultValue }: Props) => {
     return (
         <Listbox value={model} onChange={setModel}>
             <div className="relative">
-                <Listbox.Button className="relative w-full cursor-pointer rounded-lg bg-[#434654] py-3 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 sm:text-sm">
+                <Listbox.Button className="relative w-full cursor-pointer rounded-lg bg-[#434654] py-3 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 sm:text-sm my-1">
                     <span className="block text-gray-300 truncate">
                         {model}
                     </span>
