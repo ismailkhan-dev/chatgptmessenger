@@ -4,16 +4,19 @@ import {
     ExclamationTriangleIcon,
     SunIcon,
 } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 function HomePage() {
     return (
         <div className="text-white px-2 flex flex-col items-center justify-center h-screen md:px-9">
             <div className="text-center">
                 <div className="flex space-x-4 mb-3 items-center">
-                    <img
+                    <Image
                         src="/tophat.svg"
                         alt="Chap top hat"
                         className="h-16 w-16"
+                        width={16}
+                        height={16}
                     />
                     <h1 className="text-5xl font-bold">ChapGPT</h1>
                 </div>
@@ -59,7 +62,7 @@ function HomePage() {
                             Change the ChatGPT Model to use
                         </p>
                         <p className="infoText">
-                            Messages are stored in Firebase's Firestore
+                            Messages are stored in Firebase Firestore
                         </p>
                         <p className="infoText">
                             Hot Toast notifications when ChatGPT is thinking!
